@@ -5,22 +5,22 @@ import pytesseract
 plt.style.use('dark_background')
 
 # 이미지에서 자동차 번호판 위치 알아내기
-img_ori = cv2.imread(r'./sm3_image/sm3_1_low.jpg')
+img_ori = cv2.imread(r'./sm3_image/sm3_1_middle.jpg')
 
 # 번호판 글자 인식하기
 height, width, channel = img_ori.shape
-plt.figure(figsize=(12, 10))
-plt.imshow(img_ori,cmap='gray')
+#plt.figure(figsize=(12, 10))
+#plt.imshow(img_ori,cmap='gray')
 
 
 
 
 # convert image to Grayscale
 gray = cv2.cvtColor(img_ori, cv2.COLOR_BGR2GRAY)
-plt.figure(figsize=(12,10))
-plt.imshow(gray, cmap='gray')
+#plt.figure(figsize=(12,10))
+#plt.imshow(gray, cmap='gray')
 
-plt.show()
+#plt.show()
 
 # Adaptive Thresholding(Gray scale => 흑백으로)
 # Gaussian Blur => 이미지 속 노이즈 제거
@@ -43,13 +43,13 @@ img_thresh = cv2.adaptiveThreshold(
     C=9
 )
 
-plt.figure(figsize=(20,20))
-plt.subplot(1,2,1)
-plt.title('Threshold only')
-plt.imshow(img_thresh, cmap='gray')
-plt.subplot(1,2,2)
-plt.title('Blur and Threshold')
-plt.imshow(img_blur_thresh, cmap='gray')
+#plt.figure(figsize=(20,20))
+# plt.subplot(1,2,1)
+# plt.title('Threshold only')
+# plt.imshow(img_thresh, cmap='gray')
+# plt.subplot(1,2,2)
+# plt.title('Blur and Threshold')
+# plt.imshow(img_blur_thresh, cmap='gray')
 
 
 # Find Contours (이미지 속 윤곽선 찾기)
@@ -62,8 +62,8 @@ contours, _ = cv2.findContours(
 temp_result = np.zeros((height, width, channel), dtype=np.uint8)
 
 cv2.drawContours(temp_result, contours=contours, contourIdx=-1, color=(255,255,255))
-plt.figure(figsize=(12, 10))
-plt.imshow(temp_result)
+# plt.figure(figsize=(12, 10))
+# plt.imshow(temp_result)
 
 
 temp_result = np.zeros((height, width, channel), dtype=np.uint8)
@@ -85,8 +85,8 @@ for contour in contours:
         'cx': x + (w / 2),
         'cy': y + (h / 2)
     })
-plt.figure(figsize=(12,10))
-plt.imshow(temp_result, cmap='gray')
+# plt.figure(figsize=(12,10))
+# plt.imshow(temp_result, cmap='gray')
 
 
 MIN_AREA = 80
@@ -113,9 +113,9 @@ for d in possible_contours:
     cv2.rectangle(temp_result, pt1=(d['x'], d['y']), pt2=(d['x'] + d['w'], d['y'] + d['h']), color=(255, 255, 255),
                   thickness=2)
 
-plt.figure(figsize=(12, 10))
-plt.imshow(temp_result, cmap='gray')
-plt.show()
+# plt.figure(figsize=(12, 10))
+# plt.imshow(temp_result, cmap='gray')
+# plt.show()
 
 
 #기울어진 경우를 정방향으로
@@ -247,9 +247,9 @@ for i, matched_chars in enumerate(matched_result):
         'h': int(plate_height)
     })
 
-    plt.subplot(len(matched_result), 1, i + 1)
-    plt.imshow(img_cropped, cmap='gray')
-    plt.show()
+    # plt.subplot(len(matched_result), 1, i + 1)
+    # plt.imshow(img_cropped, cmap='gray')
+    # plt.show()
 
 longest_idx, longest_text = -1, 0
 plate_chars = []
@@ -300,14 +300,14 @@ for i, plate_img in enumerate(plate_imgs):
                 has_digit = True
             result_chars += c
 
-    print(result_chars)
+    #print(result_chars)
     plate_chars.append(result_chars)
 
     if has_digit and len(result_chars) > longest_text:
         longest_idx = i
 
-    plt.subplot(len(plate_imgs), 1, i + 1)
-    plt.imshow(img_result, cmap='gray')
+    # plt.subplot(len(plate_imgs), 1, i + 1)
+    # plt.imshow(img_result, cmap='gray')
 
 
 info = plate_infos[longest_idx]
