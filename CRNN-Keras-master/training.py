@@ -1,5 +1,6 @@
 from keras import backend as K
-#from keras.optimizers import Adadelta
+from keras.optimizers import Adadelta
+
 import keras.optimizers
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from Image_Generator import TextImageGenerator
