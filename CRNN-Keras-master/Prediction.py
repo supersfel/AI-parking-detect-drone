@@ -93,11 +93,11 @@ for test_img in test_imgs:
     
     # cv2.rectangle(img, (0,0), (150, 30), (0,0,0), -1)
     # cv2.putText(img, pred_texts, (5, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255),2)
-
-    #cv2.imshow("q", img)
-    #if cv2.waitKey(0) == 27:
+    #
+    # cv2.imshow("q", img)
+    # if cv2.waitKey(0) == 27:
     #   break
-    #cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
 end = time.time()
 total_time = (end - start)
