@@ -5,7 +5,7 @@ import pytesseract
 plt.style.use('dark_background')
 
 # 이미지에서 자동차 번호판 위치 알아내기
-img_ori = cv2.imread(r'./sm3_image/sm3_1_middle.jpg')
+img_ori = cv2.imread(r'./sm3_image/sm3_1_low.jpg')
 
 # 번호판 글자 인식하기
 height, width, channel = img_ori.shape

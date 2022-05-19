@@ -1,7 +1,7 @@
 from keras import backend as K
-from keras.optimizers import Adadelta
+from keras.optimizers import adadelta_v2
 
-import keras.optimizers
+# import keras.optimizers
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from Image_Generator import TextImageGenerator
 from Model import get_Model
@@ -27,7 +27,7 @@ valid_file_path = './DB/test/'
 tiger_val = TextImageGenerator(valid_file_path, img_w, img_h, val_batch_size, downsample_factor)
 tiger_val.build_data()
 
-ada = Adadelta()
+ada = adadelta_v2
 
 early_stop = EarlyStopping(monitor='loss', min_delta=0.001, patience=4, mode='min', verbose=1)
 checkpoint = ModelCheckpoint(filepath='LSTM+BN5--{epoch:02d}--{val_loss:.3f}.hdf5', monitor='loss', verbose=1, mode='min', period=1)
