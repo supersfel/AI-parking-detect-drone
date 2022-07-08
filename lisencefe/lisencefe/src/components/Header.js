@@ -30,7 +30,7 @@ function Header() {
     <>
       <header className={"Header" + (ScrollActive ? " onScrolled" : "")}>
         <Link to="/" className="left">
-          INDEX
+          DRONE MUSK
         </Link>
         <div className="right">
           <Link to="/find" className="inright">

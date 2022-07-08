@@ -30,7 +30,7 @@
 }
 
 .btn:hover {
-  background: #fff0f0;
+  background: #dfe2fe;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   transition: 0.5s;
@@ -46,7 +46,7 @@
 }
 
 .addbtn:hover {
-  background: #fff0f0;
+  background: #f0f0ff;
   color: var(--main-color);
 }
 
